@@ -1,1 +1,695 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazar da Bolinha – Estilo, Qualidade e Preço Baixo!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa: #e8336d;
+            --rosa-claro: #ff6fa3;
+            --amarelo: #ffd233;
+            --verde-wpp: #25D366;
+            --verde-wpp-dark: #128C7E;
+            --azul-escuro: #1a1a2e;
+            --creme: #fff8f0;
+            --cinza-leve: #f5f0eb;
+            --texto: #2a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--creme);
+            color: var(--texto);
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--azul-escuro);
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .header-top .telefone {
+            color: var(--amarelo);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .header-top .telefone span { color: rgba(255,255,255,0.5); font-weight: 300; margin-right: 6px; }
+
+        .header-top .wpp-link {
+            background: var(--verde-wpp);
+            color: white;
+            text-decoration: none;
+            padding: 7px 16px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .header-top .wpp-link:hover { background: var(--verde-wpp-dark); }
+
+        .hero-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+            align-items: center;
+        }
+
+        .hero-text-col {
+            padding: 50px 50px 50px 40px;
+        }
+
+        .brand-tag {
+            display: inline-block;
+            background: var(--rosa);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 50px;
+            margin-bottom: 22px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 900;
+            line-height: 1.05;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .hero-title .highlight {
+            color: var(--amarelo);
+            display: block;
+        }
+
+        .hero-sub {
+            color: rgba(255,255,255,0.65);
+            font-size: 1.05rem;
+            font-weight: 300;
+            margin: 18px 0 30px;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--verde-wpp);
+            color: white;
+            text-decoration: none;
+            padding: 15px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 24px rgba(37,211,102,0.35);
+        }
+        .hero-cta:hover {
+            background: var(--verde-wpp-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+        }
+        .hero-cta svg { width: 22px; height: 22px; fill: white; }
+
+        .hero-image-col {
+            position: relative;
+            height: 100%;
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--rosa) 0%, #c41e5a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Decorative circles */
+        .hero-image-col::before {
+            content: '';
+            position: absolute;
+            width: 350px; height: 350px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            top: -80px; right: -80px;
+        }
+        .hero-image-col::after {
+            content: '';
+            position: absolute;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            bottom: -40px; left: -40px;
+        }
+
+        .hero-placeholder {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .hero-placeholder .emoji-big { font-size: 5rem; display: block; margin-bottom: 10px; }
+
+        .hero-placeholder p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.85rem;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .hero-placeholder strong { color: white; font-style: normal; display: block; font-size: 1rem; margin-bottom: 4px; }
+
+        .hero-accent-badge {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: var(--amarelo);
+            color: var(--azul-escuro);
+            border-radius: 50%;
+            width: 90px; height: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.2;
+            animation: spin-badge 6s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes spin-badge {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ── RIBBON ── */
+        .ribbon {
+            background: var(--rosa);
+            overflow: hidden;
+            padding: 10px 0;
+            white-space: nowrap;
+        }
+
+        .ribbon-track {
+            display: inline-block;
+            animation: slide-ribbon 18s linear infinite;
+        }
+
+        .ribbon span {
+            display: inline-block;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            padding: 0 30px;
+        }
+
+        .ribbon span::after {
+            content: '✦';
+            margin-left: 30px;
+            color: var(--amarelo);
+        }
+
+        @keyframes slide-ribbon {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ── SECTION TITLE ── */
+        .section-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--rosa);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--azul-escuro);
+            line-height: 1.15;
+        }
+
+        .section-title em {
+            color: var(--rosa);
+            font-style: normal;
+        }
+
+        /* ── CATEGORY GRID ── */
+        .categories {
+            padding: 0 24px 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .cat-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .cat-card-header {
+            padding: 28px 28px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .cat-icon {
+            width: 56px; height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .cat-card-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--azul-escuro);
+            margin-bottom: 4px;
+        }
+
+        .cat-card-header .cat-sub {
+            font-size: 0.82rem;
+            color: #888;
+            font-weight: 400;
+        }
+
+        .cat-items {
+            padding: 0 28px 16px;
+        }
+
+        .cat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 0.92rem;
+            color: #555;
+        }
+        .cat-item:last-child { border-bottom: none; }
+
+        .cat-item .dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .cat-footer {
+            padding: 16px 28px 28px;
+        }
+
+        .cat-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            width: 100%;
+            background: var(--verde-wpp);
+            color: white;
+            text-decoration: none;
+            padding: 13px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .cat-btn:hover {
+            background: var(--verde-wpp-dark);
+            transform: scale(1.02);
+        }
+        .cat-btn svg { width: 18px; height: 18px; fill: white; }
+
+        /* Card color themes */
+        .theme-infantil .cat-icon { background: #fff0f5; }
+        .theme-adulto .cat-icon { background: #f0f4ff; }
+        .theme-jovem .cat-icon { background: #fff9e6; }
+        .theme-idoso .cat-icon { background: #f0fff4; }
+        .theme-eletrico .cat-icon { background: #f5f0ff; }
+        .theme-surtido .cat-icon { background: #fff4f0; }
+
+        .theme-infantil .dot { background: #e8336d; }
+        .theme-adulto .dot { background: #4a6cf7; }
+        .theme-jovem .dot { background: #f7a94a; }
+        .theme-idoso .dot { background: #2ecc71; }
+        .theme-eletrico .dot { background: #9b59b6; }
+        .theme-surtido .dot { background: #e74c3c; }
+
+        /* ── INFO STRIP ── */
+        .info-strip {
+            background: var(--azul-escuro);
+            padding: 40px 24px;
+        }
+
+        .info-strip-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .info-item { padding: 0 10px; }
+
+        .info-item .info-icon { font-size: 2rem; margin-bottom: 10px; }
+
+        .info-item h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--amarelo);
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .info-item p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #111;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        footer .footer-brand span { color: var(--rosa); }
+
+        footer p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        footer a { color: var(--amarelo); text-decoration: none; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 680px) {
+            .hero-area { grid-template-columns: 1fr; }
+            .hero-image-col { min-height: 200px; }
+            .hero-text-col { padding: 36px 24px; }
+            .header-top { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <div class="header-top">
+        <div class="telefone"><span>Fone:</span>+55 75 8847-3033</div>
+        <a href="https://wa.me/557588473033?text=Olá,%20vi%20o%20site%20do%20Bazar%20da%20Bolinha%20e%20quero%20saber%20mais!" class="wpp-link" target="_blank">💬 Falar no WhatsApp</a>
+    </div>
+
+    <div class="hero-area">
+        <div class="hero-text-col">
+            <span class="brand-tag">✦ Paulo Afonso, Bahia</span>
+            <h1 class="hero-title">
+                Bazar da
+                <span class="highlight">Bolinha</span>
+            </h1>
+            <p class="hero-sub">Estilo, qualidade e preço baixo para toda a família. Roupas, elétricos e muito mais — tudo com atendimento de coração!</p>
+            <a href="https://wa.me/557588473033?text=Olá,%20vi%20o%20site%20do%20Bazar%20da%20Bolinha%20e%20quero%20saber%20mais!" class="hero-cta" target="_blank">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Falar no WhatsApp
+            </a>
+        </div>
+
+        <div class="hero-image-col">
+            <div class="hero-placeholder">
+                <span class="emoji-big">🛍️</span>
+                <strong>[Adicione uma foto do Bazar aqui]</strong>
+                <p>Substitua com uma foto real da loja ou da proprietária para mais confiança!</p>
+            </div>
+            <div class="hero-accent-badge">Preço<br>Baixo<br>✦</div>
+        </div>
+    </div>
+</header>
+
+<!-- ── RIBBON ── -->
+<div class="ribbon">
+    <div class="ribbon-track">
+        <span>Roupas Infantis</span>
+        <span>Moda Adulto</span>
+        <span>Moda Jovem</span>
+        <span>Melhor Idade</span>
+        <span>Artefatos Elétricos</span>
+        <span>Cama Mesa e Banho</span>
+        <span>Novidades Semanais</span>
+        <span>Preço Baixo</span>
+        <span>Roupas Infantis</span>
+        <span>Moda Adulto</span>
+        <span>Moda Jovem</span>
+        <span>Melhor Idade</span>
+        <span>Artefatos Elétricos</span>
+        <span>Cama Mesa e Banho</span>
+        <span>Novidades Semanais</span>
+        <span>Preço Baixo</span>
+    </div>
+</div>
+
+<!-- ── CATEGORIES ── -->
+<div class="section-header">
+    <span class="section-label">O que você encontra aqui</span>
+    <h2 class="section-title">Temos tudo para<br><em>toda a família</em></h2>
+</div>
+
+<div class="categories">
+    <div class="cat-grid">
+
+        <!-- Infantil -->
+        <div class="cat-card theme-infantil">
+            <div class="cat-card-header">
+                <div class="cat-icon">👶</div>
+                <div>
+                    <h3>Infantil</h3>
+                    <span class="cat-sub">Para os pequenos da família</span>
+                </div>
+            </div>
+            <div class="cat-items">
+                <div class="cat-item"><span class="dot"></span>Roupas confortáveis</div>
+                <div class="cat-item"><span class="dot"></span>Tamanhos variados</div>
+                <div class="cat-item"><span class="dot"></span>Peças duráveis</div>
+                <div class="cat-item"><span class="dot"></span>Mascote Infantil</div>
+            </div>
+            <div class="cat-footer">
+                <a href="https://wa.me/557588473033?text=Olá,%20tenho%20interesse%20em%20roupas%20infantis%20do%20Bazar%20da%20Bolinha." class="cat-btn" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Ver Peças Infantis
+                </a>
+            </div>
+        </div>
+
+        <!-- Adulto -->
+        <div class="cat-card theme-adulto">
+            <div class="cat-card-header">
+                <div class="cat-icon">👔</div>
+                <div>
+                    <h3>Adultos</h3>
+                    <span class="cat-sub">Moda masculina e feminina</span>
+                </div>
+            </div>
+            <div class="cat-items">
+                <div class="cat-item"><span class="dot"></span>Moda Masculina</div>
+                <div class="cat-item"><span class="dot"></span>Moda Feminina</div>
+                <div class="cat-item"><span class="dot"></span>Dia a dia e Trabalho</div>
+                <div class="cat-item"><span class="dot"></span>Looks modernos</div>
+            </div>
+            <div class="cat-footer">
+                <a href="https://wa.me/557588473033?text=Olá,%20tenho%20interesse%20em%20roupas%20adultas%20do%20Bazar%20da%20Bolinha." class="cat-btn" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Ver Peças Adulto
+                </a>
+            </div>
+        </div>
+
+        <!-- Jovem -->
+        <div class="cat-card theme-jovem">
+            <div class="cat-card-header">
+                <div class="cat-icon">🧢</div>
+                <div>
+                    <h3>Jovens</h3>
+                    <span class="cat-sub">Tendências e estilo descolado</span>
+                </div>
+            </div>
+            <div class="cat-items">
+                <div class="cat-item"><span class="dot"></span>Estilo Descolado</div>
+                <div class="cat-item"><span class="dot"></span>Últimas tendências</div>
+                <div class="cat-item"><span class="dot"></span>Preço acessível</div>
+                <div class="cat-item"><span class="dot"></span>Moda Jovem</div>
+            </div>
+            <div class="cat-footer">
+                <a href="https://wa.me/557588473033?text=Olá,%20tenho%20interesse%20em%20roupas%20jovens%20do%20Bazar%20da%20Bolinha." class="cat-btn" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Ver Peças Jovem
+                </a>
+            </div>
+        </div>
+
+        <!-- Idoso -->
+        <div class="cat-card theme-idoso">
+            <div class="cat-card-header">
+                <div class="cat-icon">🌿</div>
+                <div>
+                    <h3>Melhor Idade</h3>
+                    <span class="cat-sub">Conforto e elegância</span>
+                </div>
+            </div>
+            <div class="cat-items">
+                <div class="cat-item"><span class="dot"></span>Tecidos Confortáveis</div>
+                <div class="cat-item"><span class="dot"></span>Fácil de vestir</div>
+                <div class="cat-item"><span class="dot"></span>Roupas Leves</div>
+                <div class="cat-item"><span class="dot"></span>Conforto Garantido</div>
+            </div>
+            <div class="cat-footer">
+                <a href="https://wa.me/557588473033?text=Olá,%20tenho%20interesse%20em%20roupas%20para%20idosos%20do%20Bazar%20da%20Bolinha." class="cat-btn" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Ver Peças Melhor Idade
+                </a>
+            </div>
+        </div>
+
+        <!-- Elétricos -->
+        <div class="cat-card theme-eletrico">
+            <div class="cat-card-header">
+                <div class="cat-icon">⚡</div>
+                <div>
+                    <h3>Artefatos Elétricos</h3>
+                    <span class="cat-sub">Utilidades para o lar</span>
+                </div>
+            </div>
+            <div class="cat-items">
+                <div class="cat-item"><span class="dot"></span>Utilitários para o lar</div>
+                <div class="cat-item"><span class="dot"></span>Eletrônicos diversos</div>
+                <div class="cat-item"><span class="dot"></span>Artefatos Testados</div>
+                <div class="cat-item"><span class="dot"></span>Variedade</div>
+            </div>
+            <div class="cat-footer">
+                <a href="https://wa.me/557588473033?text=Olá,%20tenho%20interesse%20nos%20artefatos%20elétricos%20do%20Bazar%20da%20Bolinha." class="cat-btn" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Ver Elétricos
+                </a>
+            </div>
+        </div>
+
+        <!-- Surtidos -->
+        <div class="cat-card theme-surtido">
+            <div class="cat-card-header">
+                <div class="cat-icon">🏠</div>
+                <div>
+                    <h3>Surtidos</h3>
+                    <span class="cat-sub">Variedades e novidades</span>
+                </div>
+            </div>
+            <div class="cat-items">
+                <div class="cat-item"><span class="dot"></span>Artigos Variados</div>
+                <div class="cat-item"><span class="dot"></span>Cama, Mesa e Banho</div>
+                <div class="cat-item"><span class="dot"></span>Decoração</div>
+                <div class="cat-item"><span class="dot"></span>Novidades semanais</div>
+            </div>
+            <div class="cat-footer">
+                <a href="https://wa.me/557588473033?text=Olá,%20tenho%20interesse%20nas%20variedades%20do%20Bazar%20da%20Bolinha." class="cat-btn" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Ver Variedades
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ── INFO STRIP ── -->
+<div class="info-strip">
+    <div class="info-strip-inner">
+        <div class="info-item">
+            <div class="info-icon">💰</div>
+            <h4>Preço Baixo</h4>
+            <p>Peças incríveis que cabem no bolso para toda a família</p>
+        </div>
+        <div class="info-item">
+            <div class="info-icon">💚</div>
+            <h4>Atendimento Especial</h4>
+            <p>Atendimento de coração, com cuidado e atenção</p>
+        </div>
+        <div class="info-item">
+            <div class="info-icon">🔄</div>
+            <h4>Novidades Sempre</h4>
+            <p>Chegam peças novas toda semana, venha conferir!</p>
+        </div>
+        <div class="info-item">
+            <div class="info-icon">📱</div>
+            <h4>Peça pelo WhatsApp</h4>
+            <p>Fácil e rápido, direto no seu celular</p>
+        </div>
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-brand">Bazar da <span>Bolinha</span></div>
+    <p>📞 <a href="tel:+557588473033">+55 75 8847-3033</a></p>
+    <p style="margin-top:14px;">© 2024 Bazar da Bolinha · Todos os direitos reservados · Paulo Afonso, Bahia</p>
+</footer>
+
+</body>
+</html>
+
